@@ -30,34 +30,44 @@ fun AddTodoScreen(navController: NavController, addTodoViewModel: AddTodoViewMod
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("")},
+                title = { Text("Add New Todo")},
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "back")
                     }
-                }
+                },
+                elevation = 0.dp
             )
         },
         content = {
             Column(modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .padding(16.dp)) {
-
                 OutlinedTextField(
                     value = title,
                     onValueChange = { title = it },
                     label = { Text(text = "Title")},
                     maxLines = 8,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(.9f),
+                    colors = TextFieldDefaults.outlinedTextFieldColors(
+                        textColor = Color.White,
+                        backgroundColor = MaterialTheme.colors.primary,
+                        cursorColor = Color.White,
+                        focusedBorderColor = MaterialTheme.colors.primary,
+                        focusedLabelColor = Color.White,
+                        unfocusedBorderColor = MaterialTheme.colors.primary
+                    )
                 )
 
-                Spacer(modifier = Modifier.weight(1f))
-
-                FloatingActionButton(onClick = {
-                    scope.launch { addTodoViewModel.Add(title = title, priorityColorHex = Color.Green.toString()) }
-                }) {
-                    Icon(imageVector = Icons.Default.Add, contentDescription = "add")
-                }
+            }
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {
+                scope.launch { addTodoViewModel.Add(title = title, priorityColorHex = Color.Green.toString()) }
+            }) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "add")
             }
         }
     )

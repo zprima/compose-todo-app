@@ -17,4 +17,8 @@ class ListTodoViewModel @Inject constructor(
     private val todoRepository: TodoRepository
 ): ViewModel() {
     val todos = todoRepository.getAll()
+
+    suspend fun markAsCompleted(todo: Todo){
+        todoRepository.delete(todo)
+    }
 }

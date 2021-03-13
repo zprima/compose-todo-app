@@ -8,5 +8,5 @@ data class Todo(
     @PrimaryKey(autoGenerate = true) val uid: Int,
     val title: String,
     val priorityColorHex: String,
-    val completed: Boolean
+    var completed: Boolean
 )

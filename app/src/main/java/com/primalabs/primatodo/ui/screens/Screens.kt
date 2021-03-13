@@ -1,6 +1,6 @@
 package com.primalabs.primatodo.ui.screens
 
-enum class SCREENS(val screenName: String){
-    LIST_TODO_SCREEN("list_todo_screen"),
-    ADD_TODO_SCREEN("add_todo_screen")
+enum class Screens(val screenName: String){
+    ListTodoScreen("list_todo_screen"),
+    AddTodoScreen("add_todo_screen")
 }
